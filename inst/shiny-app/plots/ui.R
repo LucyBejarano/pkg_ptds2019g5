@@ -1,33 +1,23 @@
-#
-# This is the user-interface definition of a Shiny web application. You can
-# run the application by clicking 'Run App' above.
-#
-# Find out more about building applications with Shiny here:
-#
-#    http://shiny.rstudio.com/
-#
-
 library(shiny)
 
-# Define UI for application that draws a histogram
-shinyUI(fluidPage(
-
-    # Application title
-    titlePanel("Old Faithful Geyser Data"),
-
-    # Sidebar with a slider input for number of bins
-    sidebarLayout(
-        sidebarPanel(
-            sliderInput("bins",
-                        "Number of bins:",
-                        min = 1,
-                        max = 50,
-                        value = 30)
-        ),
-
-        # Show a plot of the generated distribution
-        mainPanel(
-            plotOutput("distPlot")
+ui <- fluidPage(
+    
+    titlePanel(h1("Air pollution in Switzerland",align="center",
+                  style="padding-top:15px;font-size:28px;color:#3474A7")),
+    
+    #Structure tabs
+    mainPanel(
+        tabsetPanel(
+            tabPanel("Interactive Map", plotOutput("map")),
+            tabPanel("Timeplot",
+                     radioButtons(inputId = "poll", label = strong("Pollutant"),
+                                  choices = pollutant),
+                     dateRangeInput(inputId ="date", label = strong("Date range"),
+                                    start = "2018-05-01", end = "2019-10-29",
+                                    min = "2018-05-01", max = "2019-10-29"), 
+                     plotOutput("tmp")
+            ),
+            tabPanel("Recomendations", plotOutput("recomend"))
         )
     )
-))
+)
