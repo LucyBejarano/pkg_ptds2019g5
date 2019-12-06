@@ -1,7 +1,7 @@
 library(shiny)
 library(shinythemes)
 library(plotly)
-library(testptds)
+#library(testptds) # does not work if uncommented
 
 
 shinyUI(
@@ -36,7 +36,8 @@ shinyUI(
                 ),
                 plotlyOutput("tmp")
             ),
-            tabPanel("Timeplot"),
+            tabPanel(
+                "Timeplot"),
             "Map",
             tabPanel("Interactive map"),
             tabPanel("Pollution concentration over time"),
@@ -70,9 +71,7 @@ shinyUI(
           a diameter of less than 10 micrometers. The larger they are, the
           faster they are eliminated from the atmosphere. PM10 are normally
           released from the atmosphere within a few hours of their emission.
-          The concentration is presented in μg m−3")
-
-            ),
+          The concentration is presented in μg m−3")),
             "Recomendations",
             tabPanel("How can I help?"),
             "-----"
