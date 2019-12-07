@@ -1,7 +1,8 @@
 library(shiny)
 library(shinythemes)
 library(plotly)
-#library(testptds) # does not work if uncommented
+#library(tidyr)
+#library(openair)
 
 
 shinyUI(
@@ -11,7 +12,7 @@ shinyUI(
             h1(br(),
                "Air pollution in Switzerland",
                align = "center",
-               style = "background-color:dodgerblue;padding-top:15px;font-size:38px;color:white;margin-left: -15px;
+               style = "background-color:dodgerblue;padding-top:5px;font-size:38px;color:white;margin-left: -15px;
                         margin-right: -15px;"
                ,br(),br())
         ),
@@ -41,6 +42,17 @@ shinyUI(
             "Map",
             tabPanel("Interactive map"),
             tabPanel("Pollution concentration over time"),
+            # "Pollutants calendar",
+            # tabPanel(
+            #     "Pollutant concentration calendar",
+            #     radioButtons(
+            #         inputId = "poll2",
+            #         label = strong("Pollutant"),
+            #         choices = pollutant,
+            #         inline = TRUE
+            #     ),
+            #     plotOutput("calendar")
+            # ),
             "About the data",
             tabPanel("Pollutants",
                      br(),
