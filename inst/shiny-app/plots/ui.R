@@ -1,8 +1,8 @@
 library(shiny)
 library(shinythemes)
 library(plotly)
-#library(tidyr)
-#library(openair)
+library(tidyr)
+library(openair)
 
 
 shinyUI(
@@ -42,17 +42,17 @@ shinyUI(
             "Map",
             tabPanel("Interactive map"),
             tabPanel("Pollution concentration over time"),
-            # "Pollutants calendar",
-            # tabPanel(
-            #     "Pollutant concentration calendar",
-            #     radioButtons(
-            #         inputId = "poll2",
-            #         label = strong("Pollutant"),
-            #         choices = pollutant,
-            #         inline = TRUE
-            #     ),
-            #     plotOutput("calendar")
-            # ),
+            "Pollutants calendar",
+            tabPanel(
+                "Pollutant concentration calendar",
+                radioButtons(
+                    inputId = "poll2",
+                    label = strong("Pollutant"),
+                    choices = pollutant,
+                    inline = TRUE
+                ),
+                plotOutput("calendar")
+            ),
             "About the data",
             tabPanel("Pollutants",
                      br(),
