@@ -50,6 +50,10 @@ shiny::shinyUI(
             shiny::tabPanel("Pollutants",
                             shiny::br(),
                             shiny::br(),
+                            p("The visualizations presented contain real air pollution data
+                                     extracted from the webpage of The Federal Office for the Environment of Switzerland.
+                                     To visit the source and even download the data you can",
+                              tags$a(href="https://www.bafu.admin.ch/bafu/en/home/topics/air/state/data/data-query-nabel.html", "click here.")),
                             shiny::strong("O3 (Ozone)"),
                             shiny::p("Its concentration depends on solar radiation,
                    emissions, amount of precursors, as well as temperature.
