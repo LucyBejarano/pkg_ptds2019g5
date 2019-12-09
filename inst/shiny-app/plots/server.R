@@ -1,26 +1,26 @@
-shinyServer(function(input, output) {
-    output$tmp <- renderPlotly({
+shiny::shinyServer(function(input, output) {
+    output$tmp <- plotly::renderPlotly({
         pollutant_data %>%
-            mutate(day = as.Date(Date_time, format = "%Y-%m-%d")) %>%
-            filter(pollutant == input$poll,
+            dplyr::mutate(day = as.Date(Date_time, format = "%Y-%m-%d")) %>%
+            dplyr::filter(pollutant == input$poll,
                    day >= input$date[1] &
                        day <= input$date[2]) %>%
-            group_by(day) %>%
-            summarise(avg = mean(value)) %>%
+            dplyr::group_by(day) %>%
+            dplyr::summarise(avg = mean(value)) %>%
             na.omit() %>%
-            plot_ly(x = ~ day,
+            plotly::plot_ly(x = ~ day,
                     y =  ~ avg,
                     mode = 'lines')
     })
-    output$calendar <- renderPlot({
+    output$calendar <- shiny::renderPlot({
         pollutant_data_cal <- pollutant_data %>%
-            mutate(day = as.Date(Date_time, format = "%Y-%m-%d")) %>%
-            group_by(day, pollutant) %>%
-            summarise(avg = mean(value)) %>%
-            spread(key = pollutant, value = avg) %>%
-            rename(date = day)
+            dplyr::mutate(day = as.Date(Date_time, format = "%Y-%m-%d")) %>%
+            dplyr::group_by(day, pollutant) %>%
+            dplyr::summarise(avg = mean(value)) %>%
+            tidyr::spread(key = pollutant, value = avg) %>%
+            dplyr::rename(date = day)
 
-        calendarPlot(
+        openair::calendarPlot(
             pollutant_data_cal,
             pollutant = input$poll2,
             w.shift = 2,
