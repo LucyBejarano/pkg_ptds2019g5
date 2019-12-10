@@ -13,7 +13,8 @@ run_demo <- function() {
             call. = FALSE
         )
     }
-    
+
     shiny::runApp(appDir, display.mode = "normal")
-    
+
 }
+
