@@ -22,5 +22,5 @@ Please name your datasets following this pattern: weather_date.csv where "pollut
 and "date" the concerned months.
 }
 \author{
-Anna Alfieri, Ana Lucy Bejarano Montalvo, Saphir Kwan, Erika Lardo, Clément Perez
+Anna Alfieri, Ana Lucy Bejarano Montalvo, Saphir Kwan, Erika Lardo, Clement Perez
 }

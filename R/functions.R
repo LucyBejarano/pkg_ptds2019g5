@@ -9,7 +9,7 @@
 #' @param file_ext A\code{char} string containing the second part of the target files' names
 #' @return A \code{list} containing the loaded data
 #'
-#' @author Anna Alfieri, Ana Lucy Bejarano Montalvo, Saphir Kwan, Erika Lardo, Clément Perez
+#' @author Anna Alfieri, Ana Lucy Bejarano Montalvo, Saphir Kwan, Erika Lardo, Clement Perez
 #' @export
 
 load_data <- function(path, pollutant, file_ext) {
@@ -29,7 +29,7 @@ load_data <- function(path, pollutant, file_ext) {
 #' @param file_ext A\code{char} string containing the second part of the target files' names
 #' @return A \code{list} containing the loaded data
 #'
-#' @author Anna Alfieri, Ana Lucy Bejarano Montalvo, Saphir Kwan, Erika Lardo, Clément Perez
+#' @author Anna Alfieri, Ana Lucy Bejarano Montalvo, Saphir Kwan, Erika Lardo, Clement Perez
 #' @export
 
 load_data2 <- function(path, pollutant, file_ext) {
@@ -45,7 +45,7 @@ load_data2 <- function(path, pollutant, file_ext) {
 #' @param name_vec A \code{char} vector containing the names to clean
 #' @return A \code{vector} contains the cleaned names
 #'
-#' @author Anna Alfieri, Ana Lucy Bejarano Montalvo, Saphir Kwan, Erika Lardo, Clément Perez
+#' @author Anna Alfieri, Ana Lucy Bejarano Montalvo, Saphir Kwan, Erika Lardo, Clement Perez
 #' @export
 
 clean_names <- function(name_vec){
@@ -64,7 +64,7 @@ clean_names <- function(name_vec){
 #' @param pollutant A \code{char} vector containing names of pollutant
 #' @return A \code{list} a cleaned and named list
 #'
-#' @author Anna Alfieri, Ana Lucy Bejarano Montalvo, Saphir Kwan, Erika Lardo, Clément Perez
+#' @author Anna Alfieri, Ana Lucy Bejarano Montalvo, Saphir Kwan, Erika Lardo, Clement Perez
 #' @export
 
 clean_list <- function(loaded_file, pollutant){
@@ -90,7 +90,7 @@ clean_list <- function(loaded_file, pollutant){
 #' @param name_vec A \code{list} list containing the datasets as returned by clean_file()
 #' @return A \code{vector} contains the locations' names
 #'
-#' @author Anna Alfieri, Ana Lucy Bejarano Montalvo, Saphir Kwan, Erika Lardo, Clément Perez
+#' @author Anna Alfieri, Ana Lucy Bejarano Montalvo, Saphir Kwan, Erika Lardo, Clement Perez
 #' @export
 
 get_location_name <- function(loaded_file) {

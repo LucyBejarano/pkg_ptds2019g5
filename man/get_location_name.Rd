@@ -16,5 +16,5 @@ A \code{vector} contains the locations' names
 Retrieve the names of the Swiss locations present in the data
 }
 \author{
-Anna Alfieri, Ana Lucy Bejarano Montalvo, Saphir Kwan, Erika Lardo, Clément Perez
+Anna Alfieri, Ana Lucy Bejarano Montalvo, Saphir Kwan, Erika Lardo, Clement Perez
 }

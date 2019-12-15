@@ -16,5 +16,5 @@ A \code{vector} contains the cleaned names
 Cleans names of Swiss locations by removing all accents and replacing dashes by underscores.
 }
 \author{
-Anna Alfieri, Ana Lucy Bejarano Montalvo, Saphir Kwan, Erika Lardo, Clément Perez
+Anna Alfieri, Ana Lucy Bejarano Montalvo, Saphir Kwan, Erika Lardo, Clement Perez
 }

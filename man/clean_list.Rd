@@ -18,5 +18,5 @@ A \code{list} a cleaned and named list
 Takes an untidied list of dataframes and cleans it. Cleans the locations' names and variables' type.
 }
 \author{
-Anna Alfieri, Ana Lucy Bejarano Montalvo, Saphir Kwan, Erika Lardo, Clément Perez
+Anna Alfieri, Ana Lucy Bejarano Montalvo, Saphir Kwan, Erika Lardo, Clement Perez
 }

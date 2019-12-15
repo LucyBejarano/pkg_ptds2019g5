@@ -7,7 +7,7 @@ Author: c(
     person("Erika, "Lardo", role = "aut"),
     person("Anna", "Alfieri", role = "aut"),
     person("Saphir", "Kwan", role = "aut"),
-    person("Clément", "Perez", role = "aut")
+    person("Clement", "Perez", role = "aut")
     )
 Maintainer: Ana Lucy Bejarano Montalvo <analucy.bejaranomontalvo@unil.ch>
 Description: This package provides a visual representation in various formats of the concentration of six pollutants (CO, NO2, O3, PM10, SO2, PM2.5) in Switzerland. 
@@ -36,6 +36,4 @@ Imports:
     tidyr,
     tidyverse,
     openair
-RoxygenNote: 7.0.0
-
-
+RoxygenNote: 7.0.2
