@@ -10,10 +10,10 @@ clean_names(name_vec)
 \item{name_vec}{A \code{char} vector containing the names to clean}
 }
 \value{
-A \code{vector} containing the cleaned names
+A \code{vector} contains the cleaned names
 }
 \description{
-Cleans names of Swiss location by removing all accent and replacing dashes by underscore.
+Cleans names of Swiss locations by removing all accents and replacing dashes by underscores.
 }
 \author{
 Anna Alfieri, Ana Lucy Bejarano Montalvo, Saphir Kwan, Erika Lardo, Clément Perez

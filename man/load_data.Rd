@@ -9,7 +9,7 @@ load_data(path, pollutant, file_ext)
 \arguments{
 \item{path}{A \code{char} path to locate the target files}
 
-\item{pollutant}{A \code{char} vector containing names of pollutant to load}
+\item{pollutant}{A \code{char} vector containing the names of the pollutants you want to load}
 
 \item{file_ext}{A\code{char} string containing the second part of the target files' names}
 }
@@ -18,6 +18,8 @@ A \code{list} containing the loaded data
 }
 \description{
 Load into a list several dataset as retrieved from https://www.bafu.admin.ch/bafu/en/home/topics/air/state/data/data-query-nabel.html.
+Please name your datasets following this pattern: pollutant_date.csv where "pollutant" is the name of the pollutant
+and "date" the concerned months.
 }
 \author{
 Anna Alfieri, Ana Lucy Bejarano Montalvo, Saphir Kwan, Erika Lardo, Clément Perez

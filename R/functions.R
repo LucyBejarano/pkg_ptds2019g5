@@ -1,9 +1,11 @@
 #' @title Load Swiss Air Pollutant Data
 #'
 #' @description Load into a list several dataset as retrieved from https://www.bafu.admin.ch/bafu/en/home/topics/air/state/data/data-query-nabel.html.
+#' Please name your datasets following this pattern: pollutant_date.csv where "pollutant" is the name of the pollutant
+#' and "date" the concerned months.
 #'
 #' @param path A \code{char} path to locate the target files
-#' @param pollutant A \code{char} vector containing names of pollutant to load
+#' @param pollutant A \code{char} vector containing the names of the pollutants you want to load
 #' @param file_ext A\code{char} string containing the second part of the target files' names
 #' @return A \code{list} containing the loaded data
 #'
@@ -19,9 +21,9 @@ load_data <- function(path, pollutant, file_ext) {
 
 #' @title Clean Swiss Location Names
 #'
-#' @description Cleans names of Swiss location by removing all accent and replacing dashes by underscore.
+#' @description Cleans names of Swiss locations by removing all accents and replacing dashes by underscores.
 #' @param name_vec A \code{char} vector containing the names to clean
-#' @return A \code{vector} containing the cleaned names
+#' @return A \code{vector} contains the cleaned names
 #'
 #' @author Anna Alfieri, Ana Lucy Bejarano Montalvo, Saphir Kwan, Erika Lardo, Clément Perez
 #' @export
@@ -37,10 +39,10 @@ clean_names <- function(name_vec){
 
 #' @title Clean list of Swiss Air Pollutant dataframe
 #'
-#' @description Takes an untidied list of dataframe and cleans it. Cleans the locations' names and variables' type.
-#' @param loaded_file A \code{list} list containing all the dataframes (return by load_data())
+#' @description Takes an untidied list of dataframes and cleans it. Cleans the locations' names and variables' type.
+#' @param loaded_file A \code{list} list containing all the dataframes (returned by load_data())
 #' @param pollutant A \code{char} vector containing names of pollutant
-#' @return A \code{list} a cleaned and labelled list
+#' @return A \code{list} a cleaned and named list
 #'
 #' @author Anna Alfieri, Ana Lucy Bejarano Montalvo, Saphir Kwan, Erika Lardo, Clément Perez
 #' @export

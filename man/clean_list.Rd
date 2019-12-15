@@ -7,15 +7,15 @@
 clean_list(loaded_file, pollutant)
 }
 \arguments{
-\item{loaded_file}{A \code{list} list containing all the dataframes (return by load_data())}
+\item{loaded_file}{A \code{list} list containing all the dataframes (returned by load_data())}
 
 \item{pollutant}{A \code{char} vector containing names of pollutant}
 }
 \value{
-A \code{list} a cleaned and labelled list
+A \code{list} a cleaned and named list
 }
 \description{
-Takes an untidied list of dataframe and cleans it. Cleans the locations' names and variables' type.
+Takes an untidied list of dataframes and cleans it. Cleans the locations' names and variables' type.
 }
 \author{
 Anna Alfieri, Ana Lucy Bejarano Montalvo, Saphir Kwan, Erika Lardo, Clément Perez
