@@ -1,21 +1,45 @@
 Package: ptds2019g5
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Application for Air Pollutants Analysis in Switzerland
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Author: c(
+    person("Ana Lucy", "Bejarano Montalvo", email="analucy.bejaranomontalvo@unil.ch", role = c("aut", "cre"),
+    person("Erika, "Lardo", role = "aut"),
+    person("Anna", "Alfieri", role = "aut"),
+    person("Saphir", "Kwan", role = "aut"),
+    person("Clément", "Perez", role = "aut")
+    )
+Maintainer: Ana Lucy Bejarano Montalvo <analucy.bejaranomontalvo@unil.ch>
+Description: This package provides a visual representation in various formats of the concentration of six pollutants (CO, NO2, O3, PM10, SO2, PM2.5) in Switzerland. 
+	Through an application are displayed : 
+	- several timeplots by localisation and pollutant
+	- a barplot by pollutant
+	- a calendar per pollutant that shows the average concentration per day
+	- two calendars representing the average temperature and precipitation per day
+	- an information page about these pollutant including a table with the swiss limit regulation.
+
+
+
+	The user can easily have the analyses of the latest data by downloading the data on the following link: https://www.bafu.admin.ch/bafu/en/home/topics/air/state/data/data-query-nabel.html
 Suggests: openair
 Additional_repositories: https://github.com/davidcarslaw/openair
-License: What license is it under?
+License: GNU General Public License
 Encoding: UTF-8
 LazyData: true
 Imports:
-    shiny,
-    shinythemes,
-    plotly,
-    tidyr,
+    ptds2019g5,
     dplyr, 
-    ggplot2
+    ggplot2,
+    lubridate,
+    magrittr,
+    plotly,
+    rgdal,
+    rworldmap,
+    shiny (>= 1.4.0),
+    shinythemes,
+    tidyr,
+    tidyverse,
+    openair
 RoxygenNote: 7.0.0
+
+
