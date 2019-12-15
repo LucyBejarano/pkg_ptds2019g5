@@ -1,5 +1,21 @@
 shiny::shinyServer(function(input, output) {
 
+    #Add latitude and longitude to be able to draw a map
+    cities <- tidyr::tibble(
+        name = loc,
+        latitude = c(46.949589, 46.524881, 46.010704, 47.376215, 47.536560, 47.401998, 47.309362, 46.219574, 46.147617,46.819803, 47.479756, 47.206372, 47.025573, 47.067360, 46.804398, 46.547502 ),
+        longitude = c(7.440509,  6.638024, 8.958149, 8.533894, 7.570077, 8.611938, 7.818373, 7.329855, 8.854938, 6.940371, 8.907089, 8.191635, 6.954111, 8.465508, 9.836831, 7.982133)
+    )
+
+    #Download swiss map
+    world_map <- rworldmap::getMap(resolution = "high")
+    switzerland <- world_map@polygons[[40]]@Polygons[[1]]@coords %>% tidyr::as_tibble()
+
+    #Add pollutants limits
+    pollutants_limits <- data.frame(c("O3", "NO2", "SO2", "CO", "PM10", "PM2.5"),
+                                    c(120, 30, 1.3, 8, 20, 10))
+    colnames(pollutants_limits) <- c("pollutant", "limit")
+
     #Maps
     pollutant_month_avg <- pollutant_data %>%
         dplyr::mutate(time = format(Date_time, format = "%Y-%m")) %>%
