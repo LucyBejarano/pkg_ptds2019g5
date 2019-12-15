@@ -5,11 +5,11 @@ shiny::shinyUI(
     shiny::fluidPage(
         theme = shinythemes::shinytheme("paper"),
         shiny::titlePanel(
-            shiny::h1(br(),
+            shiny::h1(shiny::br(),
                       "Air pollution in Switzerland",
                       align = "center",
                       style = "background-color:dodgerblue;padding-top:15px;font-size:38px;color:white;margin-left: -15px;
-                        margin-right: -15px;", br(),br())
+                        margin-right: -15px;", shiny::br(), shiny::br())
         ),
         shiny::navlistPanel(
             "Map",
