@@ -1,22 +1,22 @@
 shiny::shinyServer(function(input, output) {
 
-    #Add latitude and longitude to be able to draw a map
+    # Add latitude and longitude to be able to draw a map
     cities <- tidyr::tibble(
         name = loc,
         latitude = c(46.949589, 46.524881, 46.010704, 47.376215, 47.536560, 47.401998, 47.309362, 46.219574, 46.147617,46.819803, 47.479756, 47.206372, 47.025573, 47.067360, 46.804398, 46.547502 ),
         longitude = c(7.440509,  6.638024, 8.958149, 8.533894, 7.570077, 8.611938, 7.818373, 7.329855, 8.854938, 6.940371, 8.907089, 8.191635, 6.954111, 8.465508, 9.836831, 7.982133)
     )
 
-    #Download swiss map
+    # Download swiss map
     world_map <- rworldmap::getMap(resolution = "high")
     switzerland <- world_map@polygons[[40]]@Polygons[[1]]@coords %>% tidyr::as_tibble()
 
-    #Add pollutants limits
+    # Add pollutants limits
     pollutants_limits <- data.frame(c("O3", "NO2", "SO2", "CO", "PM10", "PM2.5"),
                                     c(120, 30, 1.3, 8, 20, 10))
     colnames(pollutants_limits) <- c("pollutant", "limit")
 
-    #Maps
+## Maps
     pollutant_month_avg <- pollutant_data %>%
         dplyr::mutate(time = format(Date_time, format = "%Y-%m")) %>%
         dplyr::group_by(time, pollutant, name) %>%
@@ -102,7 +102,7 @@ shiny::shinyServer(function(input, output) {
         )
     })
 
-    #Time plots
+## Timeplots
     pollutant_complete <- dplyr::full_join(pollutant_data, pollutants_limits)
 
     output$ts_poll <- plotly::renderPlotly({
@@ -140,97 +140,96 @@ shiny::shinyServer(function(input, output) {
                            yaxis = list(title = "Value"))
     })
 
-    #BarPlots
+## BarPlots
     pollutant_avg <- pollutant_data %>%
-        group_by(pollutant, name) %>%
-        mutate(average = mean(value, na.rm= TRUE)) %>%
-        select(pollutant, name, average) %>%
+        dplyr::group_by(pollutant, name) %>%
+        dplyr::mutate(average = mean(value, na.rm= TRUE)) %>%
+        dplyr::select(pollutant, name, average) %>%
         unique()
 
-    output$Barplot_CO <- renderPlot({ pollutant_avg %>%
-            filter(pollutant == "CO") %>%
-            ggplot(mapping = aes (x = reorder(name, average), y = average)) +
-            geom_bar(stat = "identity", width = 0.5, fill = "steelblue") +
-            geom_text(aes(2, 0.30, label = "Swiss Limit Regulation = 8 mg m−3"), color = "red") +
-            ggtitle(label = "CO") +
-            labs(x = "Location", y = "Average concentration of CO in mg m−3") +
-            theme(axis.text.x = element_text(angle = 20),
-                  panel.background = element_rect(fill = "white"),
-                  panel.grid.major = element_line(colour = "grey88"))
+    output$Barplot_CO <- shiny::renderPlot({ pollutant_avg %>%
+            dplyr::filter(pollutant == "CO") %>%
+            ggplot2::ggplot(mapping = aes (x = reorder(name, average), y = average)) +
+            ggplot2::geom_bar(stat = "identity", width = 0.5, fill = "steelblue") +
+            ggplot2::geom_text(aes(2, 0.30, label = "Swiss Limit Regulation = 8 mg m−3"), color = "red") +
+            ggplot2::ggtitle(label = "CO") +
+            ggplot2::labs(x = "Location", y = "Average concentration of CO in mg m−3") +
+            ggplot2::theme(axis.text.x = element_text(angle = 20),
+                           panel.background = element_rect(fill = "white"),
+                           panel.grid.major = element_line(colour = "grey88"))
     })
 
-    output$Barplot_NO2 <- renderPlot({
+    output$Barplot_NO2 <- shiny::renderPlot({
         pollutant_avg %>%
-            filter(pollutant == "NO2") %>%
-            ggplot(mapping = aes (x = reorder(name, average), y = average)) +
-            geom_bar(stat = "identity", width = 0.5, fill = "steelblue") +
-            geom_hline(yintercept = 30, linetype = "dashed", color = "red") +
-            geom_text(aes(3, 31, label = "Swiss Limit Regulation = 30"), color = "red") +
-            ggtitle(label = "NO2") +
-            labs(x = "Location", y = "Average concentration of NO2 in μg m−3") +
-            theme(axis.text.x = element_text(angle = 20),
-                  panel.background = element_rect(fill = "white"),
-                  panel.grid.major = element_line(colour = "grey88"))
+            dplyr::filter(pollutant == "NO2") %>%
+            ggplot2::ggplot(mapping = aes (x = reorder(name, average), y = average)) +
+            ggplot2::geom_bar(stat = "identity", width = 0.5, fill = "steelblue") +
+            ggplot2::geom_hline(yintercept = 30, linetype = "dashed", color = "red") +
+            ggplot2::geom_text(aes(3, 31, label = "Swiss Limit Regulation = 30"), color = "red") +
+            ggplot2::ggtitle(label = "NO2") +
+            ggplot2::labs(x = "Location", y = "Average concentration of NO2 in μg m−3") +
+            ggplot2::theme(axis.text.x = element_text(angle = 20),
+                           panel.background = element_rect(fill = "white"),
+                           panel.grid.major = element_line(colour = "grey88"))
     })
 
-    output$Barplot_o3 <- renderPlot({
+    output$Barplot_o3 <- shiny::renderPlot({
         pollutant_avg %>%
-            filter(pollutant == "O3") %>%
-            ggplot(mapping = aes (x = reorder(name, average), y = average)) +
-            geom_bar(stat = "identity", width = 0.5, fill = "steelblue") +
-            geom_hline(yintercept = 120, linetype = "dashed", color = "red") +
-            geom_text(aes(3, 125, label = "Swiss Limit Regulation = 120"), color = "red") +
+            dplyr::filter(pollutant == "O3") %>%
+            ggplot2::ggplot(mapping = aes (x = reorder(name, average), y = average)) +
+            ggplot2::geom_bar(stat = "identity", width = 0.5, fill = "steelblue") +
+            ggplot2::geom_hline(yintercept = 120, linetype = "dashed", color = "red") +
+            ggplot2::geom_text(aes(3, 125, label = "Swiss Limit Regulation = 120"), color = "red") +
             ggtitle(label = "O3") +
-            labs(x = "Location", y = "Average concentration of O3 in μg m−3") +
-            theme(axis.text.x = element_text(angle = 20),
-                  panel.background = element_rect(fill = "white"),
-                  panel.grid.major = element_line(colour = "grey88"))
+            ggplot2::labs(x = "Location", y = "Average concentration of O3 in μg m−3") +
+            ggplot2::theme(axis.text.x = element_text(angle = 20),
+                           panel.background = element_rect(fill = "white"),
+                           panel.grid.major = element_line(colour = "grey88"))
     })
 
-    output$Barplot_SO2 <- renderPlot({
+    output$Barplot_SO2 <- shiny::renderPlot({
         pollutant_avg %>%
-            filter(pollutant == "SO2") %>%
-            ggplot(mapping = aes (x = reorder(name, average), y = average)) +
-            geom_bar(stat = "identity", width = 0.5, fill = "steelblue") +
-            geom_hline(yintercept = 1.3, linetype = "dashed", color = "red") +
-            geom_text(aes(2, 1.35, label = "Swiss Limit Regulation = 1.3"), color = "red") +
-            ggtitle(label = "SO2") +
-            labs(x = "Location", y = "Average concentration of SO2 in μg m−3") +
-            theme(axis.text.x = element_text(angle = 20),
-                  panel.background = element_rect(fill = "white"),
-                  panel.grid.major = element_line(colour = "grey88"))
+            dplyr::filter(pollutant == "SO2") %>%
+            ggplot2::ggplot(mapping = aes (x = reorder(name, average), y = average)) +
+            ggplot2::geom_bar(stat = "identity", width = 0.5, fill = "steelblue") +
+            ggplot2::geom_hline(yintercept = 1.3, linetype = "dashed", color = "red") +
+            ggplot2::geom_text(aes(2, 1.35, label = "Swiss Limit Regulation = 1.3"), color = "red") +
+            ggplot2::ggtitle(label = "SO2") +
+            ggplot2::labs(x = "Location", y = "Average concentration of SO2 in μg m−3") +
+            ggplot2::theme(axis.text.x = element_text(angle = 20),
+                           panel.background = element_rect(fill = "white"),
+                           panel.grid.major = element_line(colour = "grey88"))
     })
 
-    output$Barplot_PM2.5 <- renderPlot({
+    output$Barplot_PM2.5 <- shiny::renderPlot({
         pollutant_avg %>%
-            filter(pollutant == "PM2.5") %>%
-            ggplot(mapping = aes (x = reorder(name, average), y = average)) +
-            geom_bar(stat = "identity", width = 0.5, fill = "steelblue") +
-            geom_hline(yintercept = 10, linetype = "dashed", color = "red") +
-            geom_text(aes(3, 10.5, label = "Swiss Limit Regulation = 10"), color = "red") +
-            ggtitle(label = "PM2.5") +
-            labs(x = "Location", y = "Average concentration of PM2.5 in μg m−3") +
-            theme(axis.text.x = element_text(angle = 20),
-                  panel.background = element_rect(fill = "white"),
-                  panel.grid.major = element_line(colour = "grey88"))
+            dplyr::filter(pollutant == "PM2.5") %>%
+            ggplot2::ggplot(mapping = aes (x = reorder(name, average), y = average)) +
+            ggplot2::geom_bar(stat = "identity", width = 0.5, fill = "steelblue") +
+            ggplot2::geom_hline(yintercept = 10, linetype = "dashed", color = "red") +
+            ggplot2::geom_text(aes(3, 10.5, label = "Swiss Limit Regulation = 10"), color = "red") +
+            ggplot2::ggtitle(label = "PM2.5") +
+            ggplot2::labs(x = "Location", y = "Average concentration of PM2.5 in μg m−3") +
+            ggplot2::theme(axis.text.x = element_text(angle = 20),
+                           panel.background = element_rect(fill = "white"),
+                           panel.grid.major = element_line(colour = "grey88"))
     })
 
-    output$Barplot_PM10 <- renderPlot({
+    output$Barplot_PM10 <- shiny::renderPlot({
         pollutant_avg %>%
-            filter(pollutant == "PM10") %>%
-            ggplot(mapping = aes (x = reorder(name, average), y = average)) +
-            geom_bar(stat = "identity", width = 0.5, fill = "steelblue") +
-            geom_hline(yintercept = 20, linetype = "dashed", color = "red") +
-            geom_text(aes(3, 21, label = "Swiss Limit Regulation = 20"), color = "red") +
-            ggtitle(label = "PM10") +
-            labs(x = "Location", y = "Average concentration of PM10 in μg m−3") +
-            theme(axis.text.x = element_text(angle = 20),
-                  panel.background = element_rect(fill = "white"),
-                  panel.grid.major = element_line(colour = "grey88"))
+            dplyr::filter(pollutant == "PM10") %>%
+            ggplot2::ggplot(mapping = aes (x = reorder(name, average), y = average)) +
+            ggplot2::geom_bar(stat = "identity", width = 0.5, fill = "steelblue") +
+            ggplot2::geom_hline(yintercept = 20, linetype = "dashed", color = "red") +
+            ggplot2::geom_text(aes(3, 21, label = "Swiss Limit Regulation = 20"), color = "red") +
+            ggplot2::ggtitle(label = "PM10") +
+            ggplot2::labs(x = "Location", y = "Average concentration of PM10 in μg m−3") +
+            ggplot2::theme(axis.text.x = element_text(angle = 20),
+                           panel.background = element_rect(fill = "white"),
+                           panel.grid.major = element_line(colour = "grey88"))
     })
 
-    #Calendars
-
+## Calendars
     output$calendar <- shiny::renderPlot({
         pollutant_data_cal <- pollutant_data %>%
             dplyr::mutate(day = as.Date(Date_time, format = "%Y-%m-%d", tz="Europe/Zurich")) %>%
@@ -269,20 +268,20 @@ shiny::shinyServer(function(input, output) {
     })
 
 
-    output$calendar_precipitation <-
-        shiny::renderPlot({
-            weather_df <- weather_data %>% tidyr::spread(weather, value)
-            weather_df$date <- as.Date(format(weather_df$Date_time, "%Y-%m-%d"))
+    output$calendar_precipitation <- shiny::renderPlot({
+        weather_df <- weather_data %>% tidyr::spread(weather, value)
+        weather_df$date <- as.Date(format(weather_df$Date_time, "%Y-%m-%d"))
 
-            openair::calendarPlot(weather_df, pollutant = "precipitation", w.shift = 2, cols = c("white", "blue 1", "blue 4"), main = "Precipitation")
+        openair::calendarPlot(weather_df, pollutant = "precipitation", w.shift = 2,
+                              cols = c("white", "blue 1", "blue 4"), main = "Precipitation")
         })
 
-    output$calendar_temperature <-
-        shiny::renderPlot({
-            weather_df <- weather_data %>% tidyr::spread(weather, value)
-            weather_df$date <- as.Date(format(weather_df$Date_time, "%Y-%m-%d"))
+    output$calendar_temperature <- shiny::renderPlot({
+        weather_df <- weather_data %>% tidyr::spread(weather, value)
+        weather_df$date <- as.Date(format(weather_df$Date_time, "%Y-%m-%d"))
 
-            openair::calendarPlot(weather_df, pollutant = "temperature", w.shift = 2, cols = "jet", main = "Temperature")
+        openair::calendarPlot(weather_df, pollutant = "temperature", w.shift = 2,
+                              cols = "jet", main = "Temperature")
         })
 })
 
