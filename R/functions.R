@@ -18,6 +18,26 @@ load_data <- function(path, pollutant, file_ext) {
     loaded_file <- sapply(tmp, read.csv, stringsAsFactors = FALSE, encoding = "UTF-8")
 }
 
+#' @title Load Swiss Air Weather Data
+#'
+#' @description Load into a list several dataset as retrieved from https://www.bafu.admin.ch/bafu/en/home/topics/air/state/data/data-query-nabel.html.
+#' Please name your datasets following this pattern: weather_date.csv where "pollutant" is the name of the weather mesurement
+#' and "date" the concerned months.
+#'
+#' @param path A \code{char} path to locate the target files
+#' @param pollutant A \code{char} vector containing the names of the pollutants you want to load
+#' @param file_ext A\code{char} string containing the second part of the target files' names
+#' @return A \code{list} containing the loaded data
+#'
+#' @author Anna Alfieri, Ana Lucy Bejarano Montalvo, Saphir Kwan, Erika Lardo, Clément Perez
+#' @export
+
+load_data2 <- function(path, pollutant, file_ext) {
+    file <- paste(pollutant, file_ext, sep ="")
+    tmp <- sapply(path, paste, file, sep = "")
+    loaded_file <- lapply(tmp, read.csv2, stringsAsFactors = FALSE, encoding = "UTF-8")
+}
+
 
 #' @title Clean Swiss Location Names
 #'
@@ -64,3 +84,25 @@ clean_list <- function(loaded_file, pollutant){
 }
 
 
+#' @title Retrieve Swiss Location Names
+#'
+#' @description Retrieve the names of the Swiss locations present in the data
+#' @param name_vec A \code{list} list containing the datasets as returned by clean_file()
+#' @return A \code{vector} contains the locations' names
+#'
+#' @author Anna Alfieri, Ana Lucy Bejarano Montalvo, Saphir Kwan, Erika Lardo, Clément Perez
+#' @export
+
+get_location_name <- function(loaded_file) {
+    max_found <- 0
+    index <- NULL
+    for (i in 1:length(loaded_file)) {
+        if (length(loaded_file[[i]]) > max_found) {
+            max_found <- length(loaded_file[[i]])
+            index <- i
+        }
+    }
+    loc <- names(loaded_file[[index]])
+    loc <- loc[-1]
+    return(loc)
+}

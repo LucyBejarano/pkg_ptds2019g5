@@ -16,5 +16,6 @@ Imports:
     shinythemes,
     plotly,
     tidyr,
-    dplyr
+    dplyr, 
+    ggplot2
 RoxygenNote: 7.0.0
