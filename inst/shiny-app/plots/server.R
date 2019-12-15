@@ -9,7 +9,8 @@ shiny::shinyServer(function(input, output) {
 
     # Download swiss map
     world_map <- rworldmap::getMap(resolution = "high")
-    switzerland <- world_map@polygons[[40]]@Polygons[[1]]@coords %>% tidyr::as_tibble()
+    switzerland <- world_map@polygons[[40]]@Polygons[[1]]@coords
+    switzerland <- tidyr::as_tibble(switzerland)
 
     # Add pollutants limits
     pollutants_limits <- data.frame(c("O3", "NO2", "SO2", "CO", "PM10", "PM2.5"),
