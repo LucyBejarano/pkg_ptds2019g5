@@ -1,3 +1,6 @@
+library(dplyr)
+library(ggplot2)
+
 shiny::shinyUI(
     shiny::fluidPage(
         theme = shinythemes::shinytheme("paper"),
