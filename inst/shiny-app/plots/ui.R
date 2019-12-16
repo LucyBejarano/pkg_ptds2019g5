@@ -31,8 +31,8 @@ shiny::shinyUI(
                             shiny::selectInput("Pollutant2",
                                                label = strong("Pollutant"),
                                                choices= c(NO2 = "Map_NO2", O3 = "Map_O3",
-                                                          PM10 = "Map_PM10", SO2 = "Map_SO2",
-                                                          CO = "Map_CO", PM2.5 = "Map_PM2.5")),
+                                                          PM10 = "Map_PM10", PM2.5 = "Map_PM2.5",
+                                                          SO2 = "Map_SO2", CO = "Map_CO")),
                             shiny::conditionalPanel(
                                 condition = "input.Pollutant2 == 'Map_NO2'",
                                 shiny::div(align="center",
@@ -52,6 +52,12 @@ shiny::shinyUI(
                                 )
                             ),
                             shiny::conditionalPanel(
+                                condition = "input.Pollutant2 == 'Map_PM2.5'",
+                                shiny::div(align="center",
+                                           plotly::plotlyOutput("Map_PM2.5", width = "700px", height = "500px")
+                                )
+                            ),
+                            shiny::conditionalPanel(
                                 condition = "input.Pollutant2 == 'Map_SO2'",
                                 shiny::div(align="center",
                                            plotly::plotlyOutput("Map_SO2", width = "700px", height = "500px"),
@@ -61,12 +67,6 @@ shiny::shinyUI(
                                 condition = "input.Pollutant2 == 'Map_CO'",
                                 shiny::div(align="center",
                                            plotly::plotlyOutput("Map_CO", width = "700px", height = "500px")
-                                )
-                            ),
-                            shiny::conditionalPanel(
-                                condition = "input.Pollutant2 == 'Map_PM2.5'",
-                                shiny::div(align="center",
-                                           plotly::plotlyOutput("Map_PM2.5", width = "700px", height = "500px")
                                 )
                             ),
                             shiny::br(),

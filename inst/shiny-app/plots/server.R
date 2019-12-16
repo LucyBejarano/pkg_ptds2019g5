@@ -67,6 +67,20 @@ shiny::shinyServer(function(input, output) {
         )
     })
 
+    output$Map_PM2.5 <- plotly::renderPlotly({
+        plotly::ggplotly(
+            pollutant_month_avg %>%
+                dplyr::filter(pollutant == "PM2.5") %>%
+                ggplot2::ggplot() +
+                ggplot2::geom_polygon(data = switzerland, ggplot2::aes(x = V1, y = V2), fill = "white", colour = "black") +
+                ggplot2::geom_point(
+                    ggplot2::aes(x = longitude, y = latitude, frame = time, color = pollutant_month_avg, size = pollutant_month_avg, tooltip = name)) +
+                ggplot2::labs(title = "Average PM2.5 concentration per month \n(based on hourly data)", x = "Longitude", y = "Latitude", color = "Value")+
+                ggplot2::theme(panel.background = ggplot2::element_rect(fill="white", color = "grey"), axis.line = ggplot2::element_line(colour = "grey"))+
+                ggplot2::scale_color_gradient2(midpoint=5, low="green", mid = "yellow", high="red"), width = 700, height = 500
+        )
+    })
+
     output$Map_SO2 <- plotly::renderPlotly({
         plotly::ggplotly(
             pollutant_month_avg %>%
@@ -92,20 +106,6 @@ shiny::shinyServer(function(input, output) {
                 ggplot2::labs(title = "Average CO concentration per month \n(based on hourly data)", x = "Longitude", y = "Latitude", color = "Value")+
                 ggplot2::theme(panel.background = ggplot2::element_rect(fill="white", color = "grey"), axis.line = ggplot2::element_line(colour = "grey"))+
                 ggplot2::scale_color_gradient2(midpoint=4, low="green", mid = "yellow", high="red"), width = 700, height = 500
-        )
-    })
-
-    output$Map_PM2.5 <- plotly::renderPlotly({
-        plotly::ggplotly(
-            pollutant_month_avg %>%
-                dplyr::filter(pollutant == "PM2.5") %>%
-                ggplot2::ggplot() +
-                ggplot2::geom_polygon(data = switzerland, ggplot2::aes(x = V1, y = V2), fill = "white", colour = "black") +
-                ggplot2::geom_point(
-                    ggplot2::aes(x = longitude, y = latitude, frame = time, color = pollutant_month_avg, size = pollutant_month_avg, tooltip = name)) +
-                ggplot2::labs(title = "Average PM2.5 concentration per month \n(based on hourly data)", x = "Longitude", y = "Latitude", color = "Value")+
-                ggplot2::theme(panel.background = ggplot2::element_rect(fill="white", color = "grey"), axis.line = ggplot2::element_line(colour = "grey"))+
-                ggplot2::scale_color_gradient2(midpoint=5, low="green", mid = "yellow", high="red"), width = 700, height = 500
         )
     })
 
