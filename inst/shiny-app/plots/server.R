@@ -30,11 +30,11 @@ shiny::shinyServer(function(input, output) {
             pollutant_month_avg %>%
                 dplyr::filter(pollutant == "NO2") %>%
                 ggplot2::ggplot() +
-                ggplot2::geom_polygon(data = switzerland, aes(x = V1, y = V2), fill = "white", colour = "black") +
+                ggplot2::geom_polygon(data = switzerland, ggplot2::aes(x = V1, y = V2), fill = "white", colour = "black") +
                 ggplot2::geom_point(
                     ggplot2::aes(x = longitude, y = latitude, frame = time, color = pollutant_month_avg, size = pollutant_month_avg, tooltip = name)) +
                 ggplot2::labs(title = "Average NO2 concentration per month \n(based on hourly data)", x = "Longitude", y = "Latitude", color = "Value")+
-                ggplot2::theme(panel.background = element_rect(fill="white", color = "grey"), axis.line = element_line(colour = "grey"))+
+                ggplot2::theme(panel.background = ggplot2::element_rect(fill="white", color = "grey"), axis.line = ggplot2::element_line(colour = "grey"))+
                 ggplot2::scale_color_gradient2(midpoint=15, low="green", mid = "yellow", high="red"), width = 700, height = 500
         )
     })
@@ -44,11 +44,11 @@ shiny::shinyServer(function(input, output) {
             pollutant_month_avg %>%
                 dplyr::filter(pollutant == "O3") %>%
                 ggplot2::ggplot() +
-                ggplot2::geom_polygon(data = switzerland, aes(x = V1, y = V2), fill = "white", colour = "black") +
+                ggplot2::geom_polygon(data = switzerland, ggplot2::aes(x = V1, y = V2), fill = "white", colour = "black") +
                 ggplot2::geom_point(
                     ggplot2::aes(x = longitude, y = latitude, frame = time, color = pollutant_month_avg, size = pollutant_month_avg, tooltip = name)) +
                 ggplot2::labs(title = "Average O3 concentration per month \n(based on hourly data)", x = "Longitude", y = "Latitude", color = "Value")+
-                ggplot2::theme(panel.background = element_rect(fill="white", color = "grey"), axis.line = element_line(colour = "grey"))+
+                ggplot2::theme(panel.background = ggplot2::element_rect(fill="white", color = "grey"), axis.line = ggplot2::element_line(colour = "grey"))+
                 ggplot2::scale_color_gradient2(midpoint=60, low="green", mid = "yellow", high="red"), width = 700, height = 500
         )
     })
@@ -58,11 +58,11 @@ shiny::shinyServer(function(input, output) {
             pollutant_month_avg %>%
                 dplyr::filter(pollutant == "PM10") %>%
                 ggplot2::ggplot() +
-                ggplot2::geom_polygon(data = switzerland, aes(x = V1, y = V2), fill = "white", colour = "black") +
+                ggplot2::geom_polygon(data = switzerland, ggplot2::aes(x = V1, y = V2), fill = "white", colour = "black") +
                 ggplot2::geom_point(
                     ggplot2::aes(x = longitude, y = latitude, frame = time, color = pollutant_month_avg, size = pollutant_month_avg, tooltip = name)) +
                 ggplot2::labs(title = "Average PM10 concentration per month \n(based on hourly data)", x = "Longitude", y = "Latitude", color = "Value")+
-                ggplot2::theme(panel.background = element_rect(fill="white", color = "grey"), axis.line = element_line(colour = "grey"))+
+                ggplot2::theme(panel.background = ggplot2::element_rect(fill="white", color = "grey"), axis.line = ggplot2::element_line(colour = "grey"))+
                 ggplot2::scale_color_gradient2(midpoint=10, low="green", mid = "yellow", high="red"), width = 700, height = 500
         )
     })
@@ -72,11 +72,11 @@ shiny::shinyServer(function(input, output) {
             pollutant_month_avg %>%
                 dplyr::filter(pollutant == "SO2") %>%
                 ggplot2::ggplot() +
-                ggplot2::geom_polygon(data = switzerland, aes(x = V1, y = V2), fill = "white", colour = "black") +
+                ggplot2::geom_polygon(data = switzerland, ggplot2::aes(x = V1, y = V2), fill = "white", colour = "black") +
                 ggplot2::geom_point(
                     ggplot2::aes(x = longitude, y = latitude, frame = time, color = pollutant_month_avg, size = pollutant_month_avg, tooltip = name)) +
                 ggplot2::labs(title = "Average SO2 concentration per month \n(based on hourly data)", x = "Longitude", y = "Latitude", color = "Value")+
-                ggplot2::theme(panel.background = element_rect(fill="white", color = "grey"), axis.line = element_line(colour = "grey"))+
+                ggplot2::theme(panel.background = ggplot2::element_rect(fill="white", color = "grey"), axis.line = ggplot2::element_line(colour = "grey"))+
                 ggplot2::scale_color_gradient2(midpoint=0.65, low="green", mid = "yellow", high="red"), width = 700, height = 500
         )
     })
@@ -86,11 +86,11 @@ shiny::shinyServer(function(input, output) {
             pollutant_month_avg %>%
                 dplyr::filter(pollutant == "CO") %>%
                 ggplot2::ggplot() +
-                ggplot2::geom_polygon(data = switzerland, aes(x = V1, y = V2), fill = "white", colour = "black") +
+                ggplot2::geom_polygon(data = switzerland, ggplot2::aes(x = V1, y = V2), fill = "white", colour = "black") +
                 ggplot2::geom_point(
                     ggplot2::aes(x = longitude, y = latitude, frame = time, color = pollutant_month_avg, size = pollutant_month_avg, tooltip = name)) +
                 ggplot2::labs(title = "Average CO concentration per month \n(based on hourly data)", x = "Longitude", y = "Latitude", color = "Value")+
-                ggplot2::theme(panel.background = element_rect(fill="white", color = "grey"), axis.line = element_line(colour = "grey"))+
+                ggplot2::theme(panel.background = ggplot2::element_rect(fill="white", color = "grey"), axis.line = ggplot2::element_line(colour = "grey"))+
                 ggplot2::scale_color_gradient2(midpoint=4, low="green", mid = "yellow", high="red"), width = 700, height = 500
         )
     })
@@ -100,11 +100,11 @@ shiny::shinyServer(function(input, output) {
             pollutant_month_avg %>%
                 dplyr::filter(pollutant == "PM2.5") %>%
                 ggplot2::ggplot() +
-                ggplot2::geom_polygon(data = switzerland, aes(x = V1, y = V2), fill = "white", colour = "black") +
+                ggplot2::geom_polygon(data = switzerland, ggplot2::aes(x = V1, y = V2), fill = "white", colour = "black") +
                 ggplot2::geom_point(
                     ggplot2::aes(x = longitude, y = latitude, frame = time, color = pollutant_month_avg, size = pollutant_month_avg, tooltip = name)) +
                 ggplot2::labs(title = "Average PM2.5 concentration per month \n(based on hourly data)", x = "Longitude", y = "Latitude", color = "Value")+
-                ggplot2::theme(panel.background = element_rect(fill="white", color = "grey"), axis.line = element_line(colour = "grey"))+
+                ggplot2::theme(panel.background = ggplot2::element_rect(fill="white", color = "grey"), axis.line = ggplot2::element_line(colour = "grey"))+
                 ggplot2::scale_color_gradient2(midpoint=5, low="green", mid = "yellow", high="red"), width = 700, height = 500
         )
     })
@@ -141,7 +141,7 @@ shiny::shinyServer(function(input, output) {
             dplyr::summarise(avg = mean(value, na.rm = TRUE)) %>%
             dplyr::ungroup() %>%
             plotly::plot_ly(x =~day, y=~avg, color =~pollutant,colors = "Set3",
-                            type = "scatter", mode = "lines+markers") %>%
+                            type = "scatter", mode = "lines") %>%
             plotly::layout(title = list(text = "Average value per day", x = 0.1),
                            xaxis = list(title = "Date"),
                            yaxis = list(title = "Value"))
@@ -157,15 +157,15 @@ shiny::shinyServer(function(input, output) {
     output$Barplot_CO <- shiny::renderPlot({ pollutant_avg %>%
             dplyr::filter(pollutant == "CO") %>%
             ggplot2::ggplot(
-                ggplot2::aes (x = reorder(name, average), y = average)) +
+                ggplot2::aes(x = reorder(name, average), y = average)) +
             ggplot2::geom_bar(stat = "identity", width = 0.5, fill = "steelblue") +
             ggplot2::geom_text(
                 ggplot2::aes(2, 0.30, label = "Swiss Limit Regulation = 8 mg m−3"), color = "red") +
             ggplot2::ggtitle(label = "CO") +
             ggplot2::labs(x = "Location", y = "Average concentration of CO in mg m−3") +
-            ggplot2::theme(axis.text.x = element_text(angle = 20),
-                           panel.background = element_rect(fill = "white"),
-                           panel.grid.major = element_line(colour = "grey88"))
+            ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 20),
+                           panel.background = ggplot2::element_rect(fill = "white"),
+                           panel.grid.major = ggplot2::element_line(colour = "grey88"))
     })
 
     output$Barplot_NO2 <- shiny::renderPlot({
@@ -179,9 +179,9 @@ shiny::shinyServer(function(input, output) {
                 ggplot2::aes(3, 31, label = "Swiss Limit Regulation = 30"), color = "red") +
             ggplot2::ggtitle(label = "NO2") +
             ggplot2::labs(x = "Location", y = "Average concentration of NO2 in μg m−3") +
-            ggplot2::theme(axis.text.x = element_text(angle = 20),
-                           panel.background = element_rect(fill = "white"),
-                           panel.grid.major = element_line(colour = "grey88"))
+            ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 20),
+                           panel.background = ggplot2::element_rect(fill = "white"),
+                           panel.grid.major = ggplot2::element_line(colour = "grey88"))
     })
 
     output$Barplot_o3 <- shiny::renderPlot({
@@ -193,11 +193,11 @@ shiny::shinyServer(function(input, output) {
             ggplot2::geom_hline(yintercept = 120, linetype = "dashed", color = "red") +
             ggplot2::geom_text(
                 ggplot2::aes(3, 125, label = "Swiss Limit Regulation = 120"), color = "red") +
-            ggtitle(label = "O3") +
+            ggplot2::ggtitle(label = "O3") +
             ggplot2::labs(x = "Location", y = "Average concentration of O3 in μg m−3") +
-            ggplot2::theme(axis.text.x = element_text(angle = 20),
-                           panel.background = element_rect(fill = "white"),
-                           panel.grid.major = element_line(colour = "grey88"))
+            ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 20),
+                           panel.background = ggplot2::element_rect(fill = "white"),
+                           panel.grid.major = ggplot2::element_line(colour = "grey88"))
     })
 
     output$Barplot_SO2 <- shiny::renderPlot({
@@ -211,9 +211,9 @@ shiny::shinyServer(function(input, output) {
                 ggplot2::aes(2, 1.35, label = "Swiss Limit Regulation = 1.3"), color = "red") +
             ggplot2::ggtitle(label = "SO2") +
             ggplot2::labs(x = "Location", y = "Average concentration of SO2 in μg m−3") +
-            ggplot2::theme(axis.text.x = element_text(angle = 20),
-                           panel.background = element_rect(fill = "white"),
-                           panel.grid.major = element_line(colour = "grey88"))
+            ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 20),
+                           panel.background = ggplot2::element_rect(fill = "white"),
+                           panel.grid.major = ggplot2::element_line(colour = "grey88"))
     })
 
     output$Barplot_PM2.5 <- shiny::renderPlot({
@@ -227,9 +227,9 @@ shiny::shinyServer(function(input, output) {
                 ggplot2::aes(3, 10.5, label = "Swiss Limit Regulation = 10"), color = "red") +
             ggplot2::ggtitle(label = "PM2.5") +
             ggplot2::labs(x = "Location", y = "Average concentration of PM2.5 in μg m−3") +
-            ggplot2::theme(axis.text.x = element_text(angle = 20),
-                           panel.background = element_rect(fill = "white"),
-                           panel.grid.major = element_line(colour = "grey88"))
+            ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 20),
+                           panel.background = ggplot2::element_rect(fill = "white"),
+                           panel.grid.major = ggplot2::element_line(colour = "grey88"))
     })
 
     output$Barplot_PM10 <- shiny::renderPlot({
@@ -243,9 +243,9 @@ shiny::shinyServer(function(input, output) {
                 ggplot2::aes(3, 21, label = "Swiss Limit Regulation = 20"), color = "red") +
             ggplot2::ggtitle(label = "PM10") +
             ggplot2::labs(x = "Location", y = "Average concentration of PM10 in μg m−3") +
-            ggplot2::theme(axis.text.x = element_text(angle = 20),
-                           panel.background = element_rect(fill = "white"),
-                           panel.grid.major = element_line(colour = "grey88"))
+            ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 20),
+                           panel.background = ggplot2::element_rect(fill = "white"),
+                           panel.grid.major = ggplot2::element_line(colour = "grey88"))
     })
 
     ## Calendars

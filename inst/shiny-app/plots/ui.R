@@ -1,6 +1,3 @@
-library(dplyr)
-library(ggplot2)
-
 shiny::shinyUI(
     shiny::fluidPage(
         theme = shinythemes::shinytheme("paper"),
@@ -12,8 +9,26 @@ shiny::shinyUI(
                         margin-right: -15px;", shiny::br(), shiny::br())
         ),
         shiny::navlistPanel(
+            "Home",
+            shiny::tabPanel("Welcome",
+                shiny::h3("Welcome", align = "center"),
+                shiny::br(),
+                shiny::br(),
+                shiny::p("Welcome to this Shiny App!"),
+                shiny::p("This app has been created for the course \"Programming Tools
+                         for Data Science\" given at the University of Lausanne."),
+                shiny::p("The aime of this tools is to provide users with a visualization
+                         tools regarding air pollutation data of Switzerland. We propose
+                         different tools to investigate the levels of concentration for
+                         different types of pollutants.")
+
+            ),
+
             "Map",
             shiny::tabPanel("Dynamic map",
+                            shiny::h3("Evolution over time", align = "center"),
+                            shiny::br(),
+                            shiny::br(),
                             shiny::selectInput("Pollutant2",
                                                label = strong("Pollutant"),
                                                choices= c(NO2 = "Map_NO2", O3 = "Map_O3",
@@ -66,6 +81,9 @@ shiny::shinyUI(
             "Explore plots",
             shiny::tabPanel(
                 "Timeplot per pollutant",
+                shiny::h3("Timeplot for Switzerland", align = "center"),
+                shiny::br(),
+                shiny::br(),
                 shiny::radioButtons(
                     inputId = "poll",
                     label = strong("Pollutant"),
@@ -87,6 +105,9 @@ shiny::shinyUI(
                      These plots enable to visualize the evolution of the quantity of the selected pollutant in the air over time. The limit level authorised in Switzerland to pevent a critical situation that become dangerous to health is defined by the red line.")
             ),
             shiny::tabPanel("Timeplot per location",
+                            shiny::h3("Timeplot per location", align = "center"),
+                            shiny::br(),
+                            shiny::br(),
                             shiny::selectInput(
                                 inputId = "loc",
                                 label = strong("Location"),
@@ -113,6 +134,9 @@ shiny::shinyUI(
                      It is possible to compare the evolution over time of the concentration of differents pollutants by location.")
             ),
             shiny::tabPanel("Barplot per pollutant",
+                            shiny::h3("Pollutants' levels per location", align = "center"),
+                            shiny::br(),
+                            shiny::br(),
                             shiny::selectInput("Pollutant",
                                                label = strong("Pollutant"),
                                                choices= c(CO = "Barplot_CO", NO2 = "Barplot_NO2",
@@ -151,6 +175,9 @@ shiny::shinyUI(
             "Calendars",
             shiny::tabPanel(
                 "Pollutant concentration calendar",
+                shiny::h3("Concentration of pollutant per day", align = "center"),
+                shiny::br(),
+                shiny::br(),
                 shiny::radioButtons(
                     inputId = "poll3",
                     label = strong("Pollutant"),
@@ -164,6 +191,9 @@ shiny::shinyUI(
                   The days in grey indicate the dates on which the maximum limit for healthy living by the Swiss Confederation has been exceeded.")
             ),
             shiny::tabPanel("Precipitations and Temperature calendar",
+                            shiny::h3("Weather information per day", align = "center"),
+                            shiny::br(),
+                            shiny::br(),
                             shiny::plotOutput("calendar_precipitation"),
                             shiny::plotOutput("calendar_temperature"),
                             shiny::br(),
@@ -175,6 +205,7 @@ shiny::shinyUI(
 
             "About the data",
             shiny::tabPanel("Pollutants",
+                            shiny::h3("Information about the pollutants", align = "center"),
                             shiny::br(),
                             shiny::br(),
                             shiny::p("The visualizations presented contain real air pollution data
@@ -210,10 +241,18 @@ shiny::shinyUI(
           The concentration is presented in μg m−3")
             ),
             shiny::tabPanel("Table Swiss Limits",
+                            shiny::h3("Recommended limits", align = "center"),
+                            shiny::br(),
+                            shiny::br(),
+                            shiny::p("The below table presents the Swiss regulatory limits per pollutant."),
                             tags$img(src = "Table_swiss_limits.JPG", width="400", height="300")
             ),
             "Recomendations",
-            shiny::tabPanel("How can I help?"),
+            shiny::tabPanel("Help?",
+                            shiny::h3("Help", align = "center"),
+                            shiny::br(),
+                            shiny::br(),
+                            shiny::p("Put a link here.")),
             widths = c(2, 10)
         )
     )
