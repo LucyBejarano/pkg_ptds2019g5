@@ -16,8 +16,8 @@ Through an interactive **ShinyApp** are displayed :
 * two calendars representing the average temperature and precipitation per day
 * an information page about these pollutant including a table with the swiss limit regulation.
   
-The user can easily have the analyses of the latest data by downloading the data on the following link: https://www.bafu.admin.ch/bafu/en/home/topics/air/state/data/data-query-nabel.html
-  
+Aditionally, we give to the user the opportunity of analyse the latest data using our **ShinyApp**. To do so, the user can download the updated data in the official webside on the following link: https://www.bafu.admin.ch/bafu/en/home/topics/air/state/data/data-query-nabel.html .After dowloading the data, the user only has to copy and run the copy_me.R document found in this repository indicating the path where the new data is located.  
+
 ## Video Presentation
 
 In order to help you understand how our project works, you can look at this video demonstrating the application's key points : https://www.youtube.com/watch?v=tDroKLXlEnU&feature=youtu.be
