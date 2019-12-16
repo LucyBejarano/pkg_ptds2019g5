@@ -286,6 +286,13 @@ shiny::shinyServer(function(input, output) {
         )
     })
 
+    output$calendar_temperature <- shiny::renderPlot({
+        weather_df <- weather_data %>% tidyr::spread(weather, value)
+        weather_df$date <- as.Date(format(weather_df$Date_time, "%Y-%m-%d"))
+
+        openair::calendarPlot(weather_df, pollutant = "temperature", w.shift = 2,
+                              cols = "jet", main = "Temperature")
+    })
 
     output$calendar_precipitation <- shiny::renderPlot({
         weather_df <- weather_data %>% tidyr::spread(weather, value)
@@ -293,14 +300,6 @@ shiny::shinyServer(function(input, output) {
 
         openair::calendarPlot(weather_df, pollutant = "precipitation", w.shift = 2,
                               cols = c("white", "blue 1", "blue 4"), main = "Precipitation")
-    })
-
-    output$calendar_temperature <- shiny::renderPlot({
-        weather_df <- weather_data %>% tidyr::spread(weather, value)
-        weather_df$date <- as.Date(format(weather_df$Date_time, "%Y-%m-%d"))
-
-        openair::calendarPlot(weather_df, pollutant = "temperature", w.shift = 2,
-                              cols = "jet", main = "Temperature")
     })
 })
 

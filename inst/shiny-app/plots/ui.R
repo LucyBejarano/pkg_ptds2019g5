@@ -11,13 +11,13 @@ shiny::shinyUI(
         shiny::navlistPanel(
             "Home",
             shiny::tabPanel("Welcome",
-                shiny::h3("Welcome", align = "center"),
-                shiny::br(),
-                shiny::br(),
-                shiny::p("Welcome to this Shiny App!"),
-                shiny::p("This app has been created for the course \"Programming Tools
+                            shiny::h3("Welcome", align = "center"),
+                            shiny::br(),
+                            shiny::br(),
+                            shiny::p("Welcome to this Shiny App!"),
+                            shiny::p("This app has been created for the course \"Programming Tools
                          for Data Science\" given at the University of Lausanne."),
-                shiny::p("The aime of this tools is to provide users with a visualization
+                            shiny::p("The aime of this tools is to provide users with a visualization
                          tools regarding air pollutation data of Switzerland. We propose
                          different tools to investigate the levels of concentration for
                          different types of pollutants.")
@@ -173,7 +173,7 @@ shiny::shinyUI(
 
             "Calendars",
             shiny::tabPanel(
-                "Pollutant concentration calendar",
+                "Pollutant concentration and weather calendar",
                 shiny::h3("Concentration of pollutant per day", align = "center"),
                 shiny::br(),
                 shiny::br(),
@@ -188,17 +188,17 @@ shiny::shinyUI(
                 shiny::br(),
                 shiny::br(),
                 p("This calendar allows to see the average concentration difference of the selected particle for each day.
-                  The days in grey indicate the dates on which the maximum limit for healthy living by the Swiss Confederation has been exceeded.")
-            ),
-            shiny::tabPanel("Precipitations and Temperature calendar",
-                            shiny::h3("Weather information per day", align = "center"),
-                            shiny::br(),
-                            shiny::br(),
-                            shiny::plotOutput("calendar_precipitation"),
-                            shiny::plotOutput("calendar_temperature"),
-                            shiny::br(),
-                            shiny::br(),
-                            shiny::p("The upper calendar displays the average amount of rain per day in mm in Switzerland.
+                  The days in grey indicate the dates on which the maximum limit for healthy living by the Swiss Confederation has been exceeded."),
+                shiny::br(),
+                shiny::br(),
+                shiny::h3("Weather information per day", align = "center"),
+                shiny::br(),
+                shiny::br(),
+                shiny::plotOutput("calendar_temperature"),
+                shiny::plotOutput("calendar_precipitation"),
+                shiny::br(),
+                shiny::br(),
+                shiny::p("The upper calendar displays the average amount of rain per day in mm in Switzerland.
                        By referring to the coloured bar on the left side, you can get an idea of the rainfall over the last year. The darker the box is, the more it rained.
                        The bottom calendar shows the average daily temperature in Celcius degree in Switzerland.")
             ),
