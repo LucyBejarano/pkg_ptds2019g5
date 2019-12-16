@@ -20,7 +20,7 @@ The user can easily have the analyses of the latest data by downloading the data
   
 ## Video Presentation
 
-In order to help you understand how our project works, you can look at this video demonstrating the application's key points.
+In order to help you understand how our project works, you can look at this video demonstrating the application's key points : https://www.youtube.com/watch?v=tDroKLXlEnU&feature=youtu.be
 
 ## Main references
 
