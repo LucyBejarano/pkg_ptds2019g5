@@ -1,3 +1,4 @@
+library(magrittr)
 shiny::shinyServer(function(input, output) {
 
     # Add latitude and longitude to be able to draw a map
