@@ -88,7 +88,8 @@ shiny::shinyUI(
                     inputId = "poll",
                     label = strong("Pollutant"),
                     choices = pollutant,
-                    inline = TRUE
+                    inline = TRUE,
+                    selected = "NO2"
                 ),
                 shiny::dateRangeInput(
                     inputId = "date",
@@ -182,7 +183,8 @@ shiny::shinyUI(
                     inputId = "poll3",
                     label = strong("Pollutant"),
                     choices = pollutant,
-                    inline = TRUE
+                    inline = TRUE,
+                    selected = "NO2"
                 ),
                 shiny::plotOutput("calendar"),
                 shiny::br(),
