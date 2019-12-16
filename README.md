@@ -10,6 +10,7 @@ Given the current state of concern about the environmental issue, we have sought
 The package contains severals function that provides a visual representation in various formats of the concentration of six pollutants (CO, NO2, O3, PM10, SO2, PM2.5) in several cities of Switzerland. 
 
 Through an interactive **ShinyApp** are displayed : 
+* a map showing the evolution of pollutants' concentrations
 * timeplots by localisation and pollutant
 * a barplot by pollutant
 * a calendar per pollutant that shows the average concentration per day
