@@ -17,8 +17,9 @@ load_data2(path, pollutant, file_ext)
 A \code{list} containing the loaded data
 }
 \description{
-Load into a list several dataset as retrieved from https://www.bafu.admin.ch/bafu/en/home/topics/air/state/data/data-query-nabel.html.
-Please name your datasets following this pattern: weather_date.csv where "pollutant" is the name of the weather mesurement
+Load into a list several dataset as retrieved from \url{https://www.bafu.admin.ch/bafu/en/home/topics/air/state/data/data-query-nabel.html}.
+The function \code{load_data2()} is similar to \code{load_data()}, however it is adapted for data separated by semi-colons (;).
+Please name your datasets following this pattern: \code{weather_date.csv} where "weather" is the name of the weather mesurement
 and "date" the concerned months.
 }
 \author{
