@@ -21,7 +21,6 @@ shiny::shinyUI(
                          tools regarding air pollutation data of Switzerland. We propose
                          different tools to investigate the levels of concentration for
                          different types of pollutants.")
-
             ),
 
             "Map",
@@ -140,13 +139,8 @@ shiny::shinyUI(
                             shiny::br(),
                             shiny::selectInput("Pollutant",
                                                label = strong("Pollutant"),
-                                               choices= c(CO = "Barplot_CO", NO2 = "Barplot_NO2",
-                                                          O3 = "Barplot_o3", PM2.5 = "Barplot_PM2.5",
-                                                          PM10 = "Barplot_PM10", SO2 = "Barplot_SO2")),
-                            shiny::conditionalPanel(
-                                condition = "input.Pollutant == 'Barplot_CO'",
-                                plotOutput("Barplot_CO")
-                            ),
+                                               choices= c(NO2 = "Barplot_NO2", O3 = "Barplot_o3", PM2.5 = "Barplot_PM2.5",
+                                                          PM10 = "Barplot_PM10", SO2 = "Barplot_SO2", CO = "Barplot_CO")),
                             shiny::conditionalPanel(
                                 condition = "input.Pollutant == 'Barplot_NO2'",
                                 plotOutput("Barplot_NO2")
@@ -166,6 +160,10 @@ shiny::shinyUI(
                             shiny::conditionalPanel(
                                 condition = "input.Pollutant == 'Barplot_SO2'",
                                 plotOutput("Barplot_SO2")
+                            ),
+                            shiny::conditionalPanel(
+                                condition = "input.Pollutant == 'Barplot_CO'",
+                                plotOutput("Barplot_CO")
                             ),
                             shiny::br(),
                             shiny::br(),
