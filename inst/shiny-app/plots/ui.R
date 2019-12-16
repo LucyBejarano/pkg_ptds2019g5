@@ -245,7 +245,8 @@ shiny::shinyUI(
                             shiny::br(),
                             shiny::br(),
                             shiny::p("The below table presents the Swiss regulatory limits per pollutant."),
-                            tags$img(src = "Table_swiss_limits.JPG", width="400", height="300")
+                            shiny::br(),
+                            tags$img(src = "Table_swiss_limits.JPG", width="400", height="300", style="display: block; margin-left: auto; margin-right: auto;")
             ),
             widths = c(2, 10)
         )
