@@ -17,10 +17,13 @@ shiny::shinyUI(
                             shiny::p("Welcome to this Shiny App!"),
                             shiny::p("This app has been created for the course \"Programming Tools
                          for Data Science\" given at the University of Lausanne."),
-                            shiny::p("The aime of this tools is to provide users with a visualization
+                            shiny::p("The aim of this Shiny app is to provide users with a visualization
                          tools regarding air pollutation data of Switzerland. We propose
                          different tools to investigate the levels of concentration for
-                         different types of pollutants.")
+                         different types of pollutants."),
+                            shiny::p("Please use the navigation panel on the left to access the different
+                                     tools. The app provides four types of charts: map, timeplot,
+                                     barplot and calendar. ")
             ),
 
             "Map",
