@@ -14,7 +14,7 @@ shiny::shinyServer(function(input, output) {
 
     # Add pollutants limits
     pollutants_limits <- data.frame(c("O3", "NO2", "SO2", "CO", "PM10", "PM2.5"),
-                                    c(120, 30, 1.3, 8, 20, 10))
+                                    c(120, 30, 30, 8, 20, 10))
     colnames(pollutants_limits) <- c("pollutant", "limit")
 
     ## Maps
@@ -77,7 +77,7 @@ shiny::shinyServer(function(input, output) {
                     ggplot2::aes(x = longitude, y = latitude, frame = time, color = pollutant_month_avg, size = pollutant_month_avg, tooltip = name)) +
                 ggplot2::labs(title = "Average SO2 concentration per month \n(based on hourly data)", x = "Longitude", y = "Latitude", color = "Value")+
                 ggplot2::theme(panel.background = ggplot2::element_rect(fill="white", color = "grey"), axis.line = ggplot2::element_line(colour = "grey"))+
-                ggplot2::scale_color_gradient2(midpoint=0.65, low="green", mid = "yellow", high="red"), width = 700, height = 500
+                ggplot2::scale_color_gradient2(midpoint=15, low="green", mid = "yellow", high="red"), width = 700, height = 500
         )
     })
 
@@ -266,19 +266,19 @@ shiny::shinyServer(function(input, output) {
                     c(0, 2, 8, 1000)
                 }
             else if (input$poll3 == "NO2") {
-                c(0, 20, 80, 1000)
+                c(0, 7, 30, 1000)
             }
             else if (input$poll3 == "O3") {
-                c(0, 50, 100, 1000)
+                c(0, 30, 120, 1000)
             }
             else if (input$poll3 == "PM10") {
-                c(0, 12.5, 50, 1000)
+                c(0, 5, 20, 1000)
             }
             else if (input$poll3 == "SO2") {
-                c(0, 0.5, 100, 1000)
+                c(0, 7, 30, 1000)
             }
             else if (input$poll3 == "PM2.5") {
-                c(0, 12.5, 25, 1000)
+                c(0, 2.5, 10, 1000)
             }
             ,
             labels = c("low", "regular", "high"),
