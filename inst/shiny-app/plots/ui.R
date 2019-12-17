@@ -191,7 +191,7 @@ shiny::shinyUI(
                 shiny::br(),
                 shiny::br(),
                 p("This calendar allows to see the average concentration difference of the selected particle for each day.
-                  The days in grey indicate the dates on which the maximum limit for healthy living by the Swiss Confederation has been exceeded."),
+                  The days in red indicate the dates on which the maximum limit for healthy living by the Swiss Confederation has been exceeded."),
                 shiny::br(),
                 shiny::br(),
                 shiny::h3("Weather information per day", align = "center"),
